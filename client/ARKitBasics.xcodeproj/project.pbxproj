@@ -11,7 +11,6 @@
 		408924EB2867B50700B4C6A6 /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408924E62867B46400B4C6A6 /* SocketClient.swift */; };
 		4095D01E286839AB0099787A /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 4095D01D286839AB0099787A /* Starscream */; };
 		5C028ED021029E1000C7AB1E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C028ECF21029E1000C7AB1E /* Utilities.swift */; };
-		5C16677F20E6E21D00B25B7E /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C16677E20E6E21D00B25B7E /* Plane.swift */; };
 		842316E01F2030C300D189D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842316DF1F2030C300D189D1 /* AppDelegate.swift */; };
 		842316E41F2030C300D189D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842316E31F2030C300D189D1 /* ViewController.swift */; };
 		842316E71F2030C300D189D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842316E51F2030C300D189D1 /* Main.storyboard */; };
@@ -24,7 +23,6 @@
 		254A1C90254A0E7000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		408924E62867B46400B4C6A6 /* SocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketClient.swift; sourceTree = "<group>"; };
 		5C028ECF21029E1000C7AB1E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		5C16677E20E6E21D00B25B7E /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		842316DC1F2030C300D189D1 /* ARKitBasics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKitBasics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842316DF1F2030C300D189D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842316E31F2030C300D189D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				842316E31F2030C300D189D1 /* ViewController.swift */,
-				5C16677E20E6E21D00B25B7E /* Plane.swift */,
 				5C028ECF21029E1000C7AB1E /* Utilities.swift */,
 				842316DF1F2030C300D189D1 /* AppDelegate.swift */,
 				408924E62867B46400B4C6A6 /* SocketClient.swift */,
@@ -182,7 +179,6 @@
 			files = (
 				408924EB2867B50700B4C6A6 /* SocketClient.swift in Sources */,
 				842316E41F2030C300D189D1 /* ViewController.swift in Sources */,
-				5C16677F20E6E21D00B25B7E /* Plane.swift in Sources */,
 				842316E01F2030C300D189D1 /* AppDelegate.swift in Sources */,
 				5C028ED021029E1000C7AB1E /* Utilities.swift in Sources */,
 			);
