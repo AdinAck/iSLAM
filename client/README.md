@@ -1,3 +1,5 @@
+*This directory is adapted from an Apple tutorial on ARKit*
+
 # Tracking and Visualizing Planes
 
 Detect surfaces in the physical environment and visualize their shape and location in 3D space.     
@@ -22,11 +24,12 @@ The [`ARSCNView`][1] class is a SceneKit view that includes an [`ARSession`][2] 
 
 The [`ARWorldTrackingConfiguration`][3] class provides high-precision motion tracking and enables features to help you place virtual content in relation to real-world surfaces. To start an AR session, create a session configuration object with the options you want (such as plane detection), then call the [`run(_:options:)`][4] method on the [`session`][5] object of your [`ARSCNView`][1] instance:
 
-``` swift
+```swift
 let configuration = ARWorldTrackingConfiguration()
 configuration.planeDetection = [.horizontal, .vertical]
 sceneView.session.run(configuration)
 ```
+
 [View in Source](x-source-tag://StartARSession)
 
 [3]:https://developer.apple.com/documentation/arkit/arworldtrackingconfiguration
@@ -46,19 +49,20 @@ After you’ve set up your AR session, you can use SceneKit to place virtual con
 
 When plane detection is enabled, ARKit adds and updates anchors for each detected plane. By default, the [`ARSCNView`][1] class adds an [`SCNNode`][9] object to the SceneKit scene for each anchor. Your view's delegate can implement the [`renderer(_:didAdd:for:)`][10] method to add content to the scene. When you add content as a child of the node corresponding to the anchor, the `ARSCNView` class automatically moves that content as ARKit refines its estimate of the plane's position.
 
-``` swift
+```swift
 func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
     // Place content only for anchors found by plane detection.
     guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-    
+
     // Create a custom object to visualize the plane geometry and extent.
     let plane = Plane(anchor: planeAnchor, in: sceneView)
-    
+
     // Add the visualization to the ARKit-managed node so that it tracks
     // changes in the plane anchor as plane estimation continues.
     node.addChildNode(plane)
 }
 ```
+
 [View in Source](x-source-tag://PlaceARContent)
 
 [9]:https://developer.apple.com/documentation/scenekit/scnnode
@@ -66,7 +70,7 @@ func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: AR
 
 ARKit offers two ways to track the area of an estimated plane. A plane anchor's [`geometry`][20] describes a convex polygon tightly enclosing all points that ARKit currently estimates to be part of the same plane (easily visualized using [`ARSCNPlaneGeometry`][21]). ARKit also provides a simpler estimate in a plane anchor's [`extent`][22] and [`center`][23], which together describe a rectangular boundary (easily visualized using [`SCNPlane`][12]).
 
-``` swift
+```swift
 // Create a mesh to visualize the estimated shape of the plane.
 guard let meshGeometry = ARSCNPlaneGeometry(device: sceneView.device!)
     else { fatalError("Can't create plane geometry") }
@@ -82,6 +86,7 @@ extentNode.simdPosition = anchor.center
 // rotate it to match the orientation of `ARPlaneAnchor`.
 extentNode.eulerAngles.x = -.pi / 2
 ```
+
 [View in Source](x-source-tag://VisualizePlane)
 
 [20]:https://developer.apple.com/documentation/arkit/arplaneanchor/2941025-geometry
@@ -90,16 +95,15 @@ extentNode.eulerAngles.x = -.pi / 2
 [23]:https://developer.apple.com/documentation/arkit/arplaneanchor/2882056-center
 [12]:https://developer.apple.com/documentation/scenekit/scnplane
 
-
 ARKit continually updates its estimates of each detected plane's shape and extent. To show the current estimated shape for each plane, this sample app also implements the [`renderer(_:didUpdate:for:)`][11] method, updating the [`ARSCNPlaneGeometry`][21] and [`SCNPlane`][12] objects to reflect the latest information from ARKit.
 
-``` swift
+```swift
 func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
     // Update only anchors and nodes set up by `renderer(_:didAdd:for:)`.
     guard let planeAnchor = anchor as? ARPlaneAnchor,
         let plane = node.childNodes.first as? Plane
         else { return }
-    
+
     // Update ARSCNPlaneGeometry to the anchor's new estimated shape.
     if let planeGeometry = plane.meshNode.geometry as? ARSCNPlaneGeometry {
         planeGeometry.update(from: planeAnchor.geometry)
@@ -111,7 +115,7 @@ func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor:
         extentGeometry.height = CGFloat(planeAnchor.extent.z)
         plane.extentNode.simdPosition = planeAnchor.center
     }
-    
+
     // Update the plane's classification and the text position
     if #available(iOS 12.0, *),
         let classificationNode = plane.classificationNode,
@@ -122,9 +126,10 @@ func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor:
             classificationNode.centerAlign()
         }
     }
-    
+
 }
 ```
+
 [View in Source](x-source-tag://UpdateARContent)
 
 [11]:https://developer.apple.com/documentation/arkit/arscnviewdelegate/2865799-renderer
