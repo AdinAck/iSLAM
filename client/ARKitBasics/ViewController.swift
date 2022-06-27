@@ -34,7 +34,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sceneView.showsStatistics = false
         
         // setup socket
-        socket = SocketClient(url: "http://192.168.86.239:1234")
+        socket = SocketClient(url: "http://m1-supercomputer.local:8080")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

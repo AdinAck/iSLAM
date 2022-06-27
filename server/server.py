@@ -35,7 +35,7 @@ class SlamServer(WebsocketServer):
 
 
 def main():
-    server = SlamServer(host='0.0.0.0', port=1234, loglevel=logging.INFO)
+    server = SlamServer(host='0.0.0.0', port=8080, loglevel=logging.INFO)
     server.run_forever()
 
 

@@ -41,7 +41,7 @@ class MyApp(ShowBase):
         self.taskMgr.add(self.update_camera, "Update Camera")
 
         self.server = SlamServer(
-            host='0.0.0.0', port=1234, loglevel=logging.INFO)
+            host='0.0.0.0', port=8080, loglevel=logging.INFO)
         Thread(target=self.server.run_forever, daemon=True).start()
 
     def update_camera(self, task):
